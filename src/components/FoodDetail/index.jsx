@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import KitchenIcon from "@mui/icons-material/Kitchen";
+import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
 import classes from "./style.module.scss";
@@ -10,7 +10,10 @@ import { stringFormatter } from "../../utils/StringFormatter";
 const FoodDetail = (id) => {
   const navigate = useNavigate();
 
+  const { paramsId } = useParams();
+
   const [foodDetail, setFoodDetail] = useState([]);
+  const [favoriteList, setFavoriteList] = useState([]);
 
   const foodDetailHandler = (id) => {
     navigate(`/${id}`);
@@ -32,6 +35,23 @@ const FoodDetail = (id) => {
         formattedData,
         true
       );
+      location.reload();
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const deleteFoodHandler = async (id) => {
+    try {
+      const response = await callApi(
+        `/favorites/${id}`,
+        "DELETE",
+        {},
+        {},
+        {},
+        true
+      );
+      location.reload();
     } catch (err) {
       console.log(err.message);
     }
@@ -76,6 +96,18 @@ const FoodDetail = (id) => {
     getFoodDetail();
   }, [id]);
 
+  useEffect(() => {
+    const getFavoriteList = async () => {
+      try {
+        const response = await callApi("/favorites", "GET", {}, {}, {}, true);
+        setFavoriteList(response);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getFavoriteList();
+  }, []);
+
   // console.log(`Food Detail ${id.id}`, foodDetail);
 
   return (
@@ -83,6 +115,9 @@ const FoodDetail = (id) => {
       {foodDetail.length > 0 && (
         <Box className={classes.container}>
           {foodDetail.map((food) => {
+            const foodFavorited = favoriteList.find(
+              (data) => data.id === food.idMeal
+            );
             return (
               <Box className={classes.container__inner} key={food.idMeal}>
                 <Box className={classes.recipe}>
@@ -147,26 +182,41 @@ const FoodDetail = (id) => {
                     })}
                   </Grid>
                   <Box className={classes.button_container}>
-                    <Button
-                      variant="outlined"
-                      className={classes.button_list}
-                      onClick={() => foodDetailHandler(food.idMeal)}
-                    >
-                      Detail
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      className={classes.button_list}
-                      onClick={() => {
-                        favoriteHandler(
-                          food.idMeal,
-                          food.strMeal,
-                          food.strMealThumb
-                        );
-                      }}
-                    >
-                      Add to favorites
-                    </Button>
+                    {!paramsId && (
+                      <Button
+                        variant="outlined"
+                        className={classes.button_list}
+                        onClick={() => foodDetailHandler(food.idMeal)}
+                      >
+                        Detail
+                      </Button>
+                    )}
+                    {!foodFavorited ? (
+                      <Button
+                        variant="outlined"
+                        className={classes.button_list}
+                        onClick={() => {
+                          favoriteHandler(
+                            food.idMeal,
+                            food.strMeal,
+                            food.strMealThumb
+                          );
+                        }}
+                      >
+                        Add to favorites
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        className={classes.button_list}
+                        color="error"
+                        onClick={() => {
+                          deleteFoodHandler(food.idMeal);
+                        }}
+                      >
+                        Remove Favorite
+                      </Button>
+                    )}
                   </Box>
                 </Box>
                 <Box

@@ -51,6 +51,7 @@ const RecipeDetail = ({ data, favorite = false }) => {
           <Button
             variant="outlined"
             className={classes.btn}
+            color="error"
             onClick={() => {
               deleteFoodHandler(data.id);
             }}
