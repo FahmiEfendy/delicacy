@@ -7,4 +7,12 @@
         font-family: $font-archivo-narrow;
         font-weight: $font-weight-bold;
     }
+
+    .list{
+        width: 80%;
+
+        @include apply-at-xxl-size {
+            width: 100%;
+        }
+    }
 }

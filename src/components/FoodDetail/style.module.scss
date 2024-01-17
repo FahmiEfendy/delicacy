@@ -5,6 +5,17 @@
   border-radius: 30px;
   width: 60%;
   position: relative;
+  @include apply-at-md-size {
+    margin-right: 2rem;
+  }
+
+  @include apply-at-xxl-size {
+    width: 80%;
+  }
+
+  @include apply-at-lg-size {
+    width: 90%;
+  }
 
   .container__inner {
     @include directionX;
@@ -17,15 +28,40 @@
       color: $color-text-primary;
       width: 25%;
 
+      @include apply-at-xxl-size {
+        width: 35%;
+      }
+
+      @include apply-at-lg-size {
+        width: 50%;
+      }
+
+      @include apply-at-md-size {
+        width: 100%;
+      }
+
       .recipe__name {
         font-family: $font-archivo-narrow;
         font-weight: $font-weight-bold;
         cursor: pointer;
+
+        @include apply-at-xs-size {
+          font-size: 1rem;
+        }
       }
 
       .recipe__desc {
         line-height: 1.5rem;
         margin-top: 1rem;
+
+        @include apply-at-lg-size {
+          font-size: 0.8rem;
+        }
+
+        @include apply-at-xs-size {
+          font-size: 0.6rem;
+          line-height: 1.2rem;
+        }
       }
 
       .recipe__ingredients {
@@ -34,6 +70,10 @@
         font-family: $font-archivo-narrow;
         font-weight: $font-weight-bold;
         color: $color-text-secondary;
+
+        @include apply-at-xs-size {
+          font-size: 1rem;
+        }
       }
 
       .recipe__ingredients_container {
@@ -45,6 +85,10 @@
             border: 2px solid $color-border;
             border-radius: 10px;
             padding: 0.5rem 1rem;
+
+            @include apply-at-md-size {
+              padding: 0;
+            }
           }
 
           .recipe__ingredients_list_item {
@@ -53,6 +97,18 @@
             .recipe__ingredients_list_item_text {
               font-family: $font-roboto;
               font-weight: $font-weight-medium;
+
+              @include apply-at-md-size {
+                font-size: 0.8em;
+              }
+
+              @include apply-at-md-size {
+                font-size: 0.7rem;
+              }
+
+              @include apply-at-xs-size {
+                font-size: 0.6rem;
+              }
             }
 
             .recipe__ingredients_list_item_text:nth-of-type(2) {
@@ -67,13 +123,44 @@
         margin-top: 1rem;
         width: 90%;
 
+        @include apply-at-lg-size {
+          width: 100%;
+        }
+
+        @include apply-at-md-size {
+          display: block;
+        }
+
         .button_list {
           width: 11rem;
           height: 3rem;
+
+          @include apply-at-md-size {
+            font-size: 0.8rem;
+            margin-left: 4rem;
+            width: 10rem;
+            height: 2.5rem;
+          }
+
+          @include apply-at-xs-size {
+            margin-left: 2rem;
+            font-size: 0.6rem;
+            width: 9rem;
+            height: 2rem;
+          }
         }
 
         .button_list:nth-of-type(2) {
           margin-left: auto;
+
+          @include apply-at-md-size {
+            margin-top: 1rem;
+            margin-left: 4rem;
+          }
+
+          @include apply-at-xs-size {
+            margin-left: 2rem;
+          }
         }
       }
     }
@@ -86,8 +173,13 @@
       .recipe__img {
         position: relative;
         z-index: 10;
-        width: 450px;
-        height: 450px;
+        width: 60%;
+        height: 60%;
+
+        @include apply-at-xxl-size {
+          width: 50%;
+          height: 50%;
+        }
       }
     }
   }
@@ -101,5 +193,9 @@
     z-index: 5;
     top: 0;
     position: absolute;
+
+    @include apply-at-md-size {
+      width: 80%;
+    }
   }
 }

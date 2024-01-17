@@ -6,5 +6,9 @@
   border-radius: 30px;
   width: 100vw;
   height: 100vh;
-  padding-bottom: 70rem;
+
+  @include apply-at-lg-size {
+    height: 100%;
+    padding-bottom: 5rem;
+  }
 }

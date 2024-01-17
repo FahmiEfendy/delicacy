@@ -182,6 +182,7 @@ const FoodDetail = (id) => {
                     })}
                   </Grid>
                   <Box className={classes.button_container}>
+                    {/* TODO: Hide Detail Button When On Detail Page */}
                     {!paramsId && (
                       <Button
                         variant="outlined"

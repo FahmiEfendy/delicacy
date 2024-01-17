@@ -1,20 +1,33 @@
 @import "../../styles/base.scss";
 
 .category {
-    @include directionX;
-    justify-content: space-between;
-    width: 60%;
-    cursor: pointer;
-    margin-top: 1rem;
+  @include directionX;
+  justify-content: space-between;
+  width: 60%;
+  cursor: pointer;
+  margin-top: 1rem;
 
-    .category__list {
-      font-family: $font-roboto;
-      font-weight: $font-weight-medium;
-      color: $color-text-secondary;
-    }
+  @include apply-at-md-size {
+    width: 100%;
+  }
 
-    .category__list_active {
-      @extend .category__list;
-      color: $color-text-primary;
+  @include apply-at-xs-size {
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  .category__list {
+    font-family: $font-roboto;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+
+    @include apply-at-xs-size {
+      margin-right: 1rem;
     }
   }
+
+  .category__list_active {
+    @extend .category__list;
+    color: $color-text-primary;
+  }
+}

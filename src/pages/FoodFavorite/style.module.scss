@@ -1,6 +1,8 @@
 @import "../../styles/base.scss";
 
 .container {
+  @include directionY;
+
   .container__inner {
     @include directionX;
     justify-content: center;

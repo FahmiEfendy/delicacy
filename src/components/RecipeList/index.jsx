@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 import Loading from "../Loading";
 import classes from "./style.module.scss";
@@ -16,7 +16,7 @@ const RecipeList = () => {
       try {
         const response = await callApi("/filter.php?a=Chinese", "GET");
 
-        const slicedResponse = response?.meals?.slice(0, 7);
+        const slicedResponse = response?.meals?.slice(0, 6);
 
         setRecipeList(slicedResponse);
       } catch (err) {
@@ -33,10 +33,16 @@ const RecipeList = () => {
       {!isLoading ? (
         <>
           <Typography variant="h4">More recipies</Typography>
-          {recipeList.length > 0 &&
-            recipeList.map((data) => {
-              return <RecipeDetail data={data} key={data.idMeal} />;
-            })}
+          <Grid container className={classes.list}>
+            {recipeList.length > 0 &&
+              recipeList.map((data) => {
+                return (
+                  <Grid item lg={2} sm={4} xs={6} key={data.idMeal}>
+                    <RecipeDetail data={data} />
+                  </Grid>
+                );
+              })}
+          </Grid>
         </>
       ) : (
         <Loading />

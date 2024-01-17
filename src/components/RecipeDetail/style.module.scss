@@ -9,6 +9,11 @@
   position: relative;
   cursor: pointer;
 
+  @include apply-at-xs-size {
+    width: 145px;
+    height: 190px;
+  }
+
   .content {
     @include directionY;
     position: relative;
@@ -23,11 +28,20 @@
       height: 110px;
       border-radius: 50%;
       border: 5px solid $color-border;
+
+      @include apply-at-xs-size {
+        width: 90px;
+        height: 90px;
+      }
     }
 
     p {
       margin-top: 1rem;
       font-weight: $font-weight-medium;
+
+      @include apply-at-xs-size {
+        font-size: 0.8rem;
+      }
     }
   }
 
