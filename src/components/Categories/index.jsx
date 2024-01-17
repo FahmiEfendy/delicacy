@@ -4,16 +4,15 @@ import React, { useEffect, useState } from "react";
 import classes from "./style.module.scss";
 import { callApi } from "../../domain/api";
 
-const Categories = () => {
+const Categories = ({ selectedCategory, setSelectedCategory }) => {
   const [categoryList, setCategoryList] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("Beef");
 
   const changeCategoryHandler = (c) => {
     setSelectedCategory(c);
   };
 
   useEffect(() => {
-    const FetchData = async () => {
+    const getCategories = async () => {
       const response = await callApi("/categories.php", "GET");
 
       const slicedResponse = response.categories.slice(0, 6);
@@ -29,7 +28,7 @@ const Categories = () => {
       setCategoryList(formattedCategory);
     };
 
-    FetchData();
+    getCategories();
   }, []);
 
   return (
@@ -41,11 +40,11 @@ const Categories = () => {
               <Typography
                 key={c.idCategory}
                 className={
-                  selectedCategory === c
+                  selectedCategory === c.strCategory
                     ? classes.category__list_active
                     : classes.category__list
                 }
-                onClick={() => changeCategoryHandler(c)}
+                onClick={() => changeCategoryHandler(c.strCategory)}
               >
                 {c.strCategory}
               </Typography>

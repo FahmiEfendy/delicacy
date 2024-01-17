@@ -1,0 +1,105 @@
+@import "../../styles/base.scss";
+
+.container {
+  margin-top: 1.5rem;
+  border-radius: 30px;
+  width: 60%;
+  position: relative;
+
+  .container__inner {
+    @include directionX;
+    width: 100vw;
+
+    .recipe {
+      padding: 1.5rem;
+      z-index: 10;
+      position: relative;
+      color: $color-text-primary;
+      width: 25%;
+
+      .recipe__name {
+        font-family: $font-archivo-narrow;
+        font-weight: $font-weight-bold;
+      }
+
+      .recipe__desc {
+        line-height: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .recipe__ingredients {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-family: $font-archivo-narrow;
+        font-weight: $font-weight-bold;
+        color: $color-text-secondary;
+      }
+
+      .recipe__ingredients_container {
+
+        .recipe__ingredients_list {
+          @include directionX;
+
+          .recipe__ingredients_icon_container {
+            background-color: $color-background;
+            border: 2px solid $color-border;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+          }
+
+          .recipe__ingredients_list_item {
+            margin-left: 0.5rem;
+
+            .recipe__ingredients_list_item_text {
+              font-family: $font-roboto;
+              font-weight: $font-weight-medium;
+            }
+
+            .recipe__ingredients_list_item_text:nth-of-type(2){
+              color: $color-text-secondary;
+            }
+            
+          }
+        }
+      }
+
+      .button_container {
+        @include directionX;
+        margin-top: 1rem;
+        width: 90%;
+
+        .button_list {
+          width: 11rem;
+          height: 3rem;
+        }
+
+        .button_list:nth-of-type(2) {
+          margin-left: auto;
+        }
+      }
+    }
+
+    .container_img {
+      @include directionX;
+      margin: auto auto auto 0;
+
+      .recipe__img {
+        position: relative;
+        z-index: 10;
+        width: 450px;
+        height: 450px;
+      }
+    }
+  }
+
+  .backdrop {
+    background-color: $color-background;
+    border: 10px solid $color-border;
+    border-radius: 30px;
+    width: 60%;
+    height: 100%;
+    z-index: 5;
+    top: 0;
+    position: absolute;
+  }
+}

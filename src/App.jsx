@@ -1,16 +1,43 @@
+import { useEffect, useState } from "react";
 import { Container, Typography } from "@mui/material";
 
+import { callApi } from "./domain/api";
 import classes from "./style.module.scss";
+import FoodList from "./components/FoodList";
 import Categories from "./components/Categories";
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState("Beef");
+  const [foodByCategoryList, setFoodByCategoryList] = useState([]);
+
+  useEffect(() => {
+    const getFoodsByCategory = async () => {
+      const response = await callApi(
+        `/filter.php?c=${selectedCategory}`,
+        "GET"
+      );
+
+      const slicedResponse = response.meals.slice(0, 10);
+
+      setFoodByCategoryList(slicedResponse);
+    };
+
+    getFoodsByCategory();
+  }, [selectedCategory]);
+
+  console.log("foodByCategoryList", foodByCategoryList);
+
   return (
     <Container maxWidth={false} className={classes.container}>
       <Typography variant="h3" className={classes.logo}>
         Delicacy
       </Typography>
       <Container maxWidth={false} className={classes.container__inner}>
-        <Categories />
+        <Categories
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <FoodList foodByCategoryList={foodByCategoryList} />
       </Container>
     </Container>
   );
