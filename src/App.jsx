@@ -5,6 +5,7 @@ import { callApi } from "./domain/api";
 import classes from "./style.module.scss";
 import FoodList from "./components/FoodList";
 import Categories from "./components/Categories";
+import RecipeList from "./components/RecipeList";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("Beef");
@@ -25,7 +26,7 @@ function App() {
     getFoodsByCategory();
   }, [selectedCategory]);
 
-  console.log("foodByCategoryList", foodByCategoryList);
+  // console.log("foodByCategoryList", foodByCategoryList);
 
   return (
     <Container maxWidth={false} className={classes.container}>
@@ -38,6 +39,7 @@ function App() {
           setSelectedCategory={setSelectedCategory}
         />
         <FoodList foodByCategoryList={foodByCategoryList} />
+        <RecipeList />
       </Container>
     </Container>
   );

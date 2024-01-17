@@ -1,0 +1,10 @@
+@import "../../styles/base.scss";
+
+.container {
+    margin-top: 2rem;
+    
+    h4 {
+        font-family: $font-archivo-narrow;
+        font-weight: $font-weight-bold;
+    }
+}

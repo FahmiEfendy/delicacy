@@ -1,0 +1,44 @@
+@import "../../styles/base.scss";
+
+.container {
+  @include directionY;
+  display: inline-block;
+  width: 170px;
+  height: 220px;
+  margin-right: 4rem;
+  position: relative;
+  cursor: pointer;
+
+  .content {
+    @include directionY;
+    position: relative;
+    z-index: 10;
+    align-items: center;
+    margin-top: 1rem;
+    color: $color-text-primary;
+    font-family: $font-roboto;
+
+    .img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 5px solid $color-border;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  .backdrop {
+    position: absolute;
+    bottom: 0;
+    height: 80%;
+    width: 100%;
+    z-index: 5;
+    background-color: $color-background;
+    border: 3px solid $color-border;
+    border-radius: 10px;
+  }
+}

@@ -48,7 +48,7 @@ const FoodDetail = (id) => {
     getFoodDetail();
   }, []);
 
-  console.log(`Food Detail ${id.id}`, foodDetail);
+  // console.log(`Food Detail ${id.id}`, foodDetail);
 
   return (
     <React.Fragment>
@@ -56,7 +56,7 @@ const FoodDetail = (id) => {
         <Box className={classes.container}>
           {foodDetail.map((food) => {
             return (
-              <Box className={classes.container__inner}>
+              <Box className={classes.container__inner} key={food.idMeal}>
                 <Box className={classes.recipe}>
                   <Typography variant="h5" className={classes.recipe__name}>
                     {food.strMeal}
@@ -75,9 +75,10 @@ const FoodDetail = (id) => {
                     spacing={3}
                     className={classes.recipe__ingredients_container}
                   >
-                    {food.strIngredients.map((i) => {
+                    {food.strIngredients.map((i, idx) => {
                       return (
                         <Grid
+                          key={idx}
                           item
                           xs={6}
                           className={classes.recipe__ingredients_list}
