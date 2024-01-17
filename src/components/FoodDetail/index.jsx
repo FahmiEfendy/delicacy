@@ -7,7 +7,7 @@ import classes from "./style.module.scss";
 import { callApi } from "../../domain/api";
 import { stringFormatter } from "../../utils/StringFormatter";
 
-const FoodDetail = (id) => {
+const FoodDetail = ({ id, onDetail = false }) => {
   const navigate = useNavigate();
 
   const { paramsId } = useParams();
@@ -61,7 +61,7 @@ const FoodDetail = (id) => {
     if (!id) return;
 
     const getFoodDetail = async () => {
-      const response = await callApi(`/lookup.php?i=${id.id}`, "GET");
+      const response = await callApi(`/lookup.php?i=${id}`, "GET");
 
       const modifiedResponse = response?.meals?.map((data) => {
         return {
@@ -113,13 +113,22 @@ const FoodDetail = (id) => {
   return (
     <React.Fragment>
       {foodDetail.length > 0 && (
-        <Box className={classes.container}>
+        <Box
+          className={onDetail ? classes.container_detail : classes.container}
+        >
           {foodDetail.map((food) => {
             const foodFavorited = favoriteList.find(
               (data) => data.id === food.idMeal
             );
             return (
-              <Box className={classes.container__inner} key={food.idMeal}>
+              <Box
+                className={
+                  onDetail
+                    ? classes.container__inner_detail
+                    : classes.container__inner
+                }
+                key={food.idMeal}
+              >
                 <Box className={classes.recipe}>
                   <Typography
                     variant="h5"
@@ -182,8 +191,7 @@ const FoodDetail = (id) => {
                     })}
                   </Grid>
                   <Box className={classes.button_container}>
-                    {/* TODO: Hide Detail Button When On Detail Page */}
-                    {!paramsId && (
+                    {!onDetail && (
                       <Button
                         variant="outlined"
                         className={classes.button_list}

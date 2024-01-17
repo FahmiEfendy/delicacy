@@ -13,7 +13,7 @@ const FoodDetailPage = () => {
     <React.Fragment>
       <Box className={classes.container}>
         {/* TODO: Add Categories */}
-        <FoodDetail id={id} />
+        <FoodDetail id={id} onDetail />
       </Box>
       <RecipeList />
     </React.Fragment>

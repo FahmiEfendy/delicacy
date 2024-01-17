@@ -184,6 +184,11 @@
     }
   }
 
+  .container__inner_detail{
+    @extend .container__inner;
+    width: 80%;
+  }
+
   .backdrop {
     background-color: $color-background;
     border: 10px solid $color-border;
@@ -198,4 +203,9 @@
       width: 80%;
     }
   }
+}
+
+.container_detail{
+  @extend .container;
+  width: 100%;
 }
