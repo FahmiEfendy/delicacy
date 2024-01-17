@@ -1,0 +1,20 @@
+@import "./styles/base.scss";
+
+.container {
+  background-color: $color-background;
+  border: 10px solid $color-border;
+  border-radius: 30px;
+  width: 100vw;
+  height: 100vh;
+
+  .logo {
+    font-family: $font-archivo-narrow;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin-top: 0.5rem;
+  }
+
+  .container__inner {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../styles/base.scss";
+
+.category {
+    @include directionX;
+    justify-content: space-between;
+    width: 40%;
+    cursor: pointer;
+
+    .category__list {
+      font-family: $font-roboto;
+      font-weight: $font-weight-medium;
+      color: $color-text-secondary;
+    }
+
+    .category__list_active {
+      @extend .category__list;
+      color: $color-text-primary;
+    }
+  }
