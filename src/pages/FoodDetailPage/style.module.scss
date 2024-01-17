@@ -1,0 +1,7 @@
+@import "../../styles/base.scss";
+
+.container {
+  @include directionY;
+  width: 100vw;
+  align-items: center;
+}

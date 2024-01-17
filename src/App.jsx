@@ -1,14 +1,11 @@
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import { RouterProvider } from "react-router-dom";
 
 import classes from "./style.module.scss";
-import { RouterProvider } from "react-router-dom";
 
 function App({ router }) {
   return (
     <Container maxWidth={false} className={classes.container}>
-      <Typography variant="h3" className={classes.logo}>
-        Delicacy
-      </Typography>
       <RouterProvider router={router}></RouterProvider>
     </Container>
   );

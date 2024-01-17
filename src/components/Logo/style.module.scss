@@ -1,0 +1,9 @@
+@import "../../styles/base.scss";
+
+.logo {
+  font-family: $font-archivo-narrow !important;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-top: 0.5rem !important;
+  cursor: pointer;
+}

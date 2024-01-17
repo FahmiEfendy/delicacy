@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import KitchenIcon from "@mui/icons-material/Kitchen";
 import { Box, Button, Grid, Typography } from "@mui/material";
@@ -7,7 +8,13 @@ import { callApi } from "../../domain/api";
 import { stringFormatter } from "../../utils/StringFormatter";
 
 const FoodDetail = (id) => {
+  const navigate = useNavigate();
+
   const [foodDetail, setFoodDetail] = useState([]);
+
+  const foodDetailHandler = (id) => {
+    navigate(`/${id}`);
+  };
 
   useEffect(() => {
     if (!id) return;
@@ -46,7 +53,7 @@ const FoodDetail = (id) => {
     };
 
     getFoodDetail();
-  }, []);
+  }, [id]);
 
   // console.log(`Food Detail ${id.id}`, foodDetail);
 
@@ -58,7 +65,11 @@ const FoodDetail = (id) => {
             return (
               <Box className={classes.container__inner} key={food.idMeal}>
                 <Box className={classes.recipe}>
-                  <Typography variant="h5" className={classes.recipe__name}>
+                  <Typography
+                    variant="h5"
+                    className={classes.recipe__name}
+                    onClick={() => foodDetailHandler(food.idMeal)}
+                  >
                     {food.strMeal}
                   </Typography>
                   <Typography variant="body1" className={classes.recipe__desc}>
@@ -123,7 +134,10 @@ const FoodDetail = (id) => {
                     </Button>
                   </Box>
                 </Box>
-                <Box className={classes.container_img}>
+                <Box
+                  className={classes.container_img}
+                  onClick={() => foodDetailHandler(food.idMeal)}
+                >
                   <img
                     src={food.strMealThumb}
                     alt={food.strMeal}
