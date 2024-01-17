@@ -24,7 +24,7 @@ const RecipeList = () => {
     <Box className={classes.container}>
       <Typography variant="h4">More recipies</Typography>
       {recipeList.map((data) => {
-        return <RecipeDetail data={data} />;
+        return <RecipeDetail data={data} key={data.idMeal} />;
       })}
     </Box>
   );
