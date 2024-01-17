@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import FoodDetail from "../FoodDetail";
+import FoodDetail from "../../components/FoodDetail";
 import classes from "./style.module.scss";
 
 const FoodList = ({ foodByCategoryList }) => {

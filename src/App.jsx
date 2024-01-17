@@ -3,7 +3,7 @@ import { Container, Typography } from "@mui/material";
 
 import { callApi } from "./domain/api";
 import classes from "./style.module.scss";
-import FoodList from "./components/FoodList";
+import FoodList from "./pages/FoodList";
 import Categories from "./components/Categories";
 import RecipeList from "./components/RecipeList";
 

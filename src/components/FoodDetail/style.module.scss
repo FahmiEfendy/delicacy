@@ -20,6 +20,7 @@
       .recipe__name {
         font-family: $font-archivo-narrow;
         font-weight: $font-weight-bold;
+        cursor: pointer;
       }
 
       .recipe__desc {
@@ -36,7 +37,6 @@
       }
 
       .recipe__ingredients_container {
-
         .recipe__ingredients_list {
           @include directionX;
 
@@ -55,10 +55,9 @@
               font-weight: $font-weight-medium;
             }
 
-            .recipe__ingredients_list_item_text:nth-of-type(2){
+            .recipe__ingredients_list_item_text:nth-of-type(2) {
               color: $color-text-secondary;
             }
-            
           }
         }
       }
@@ -82,6 +81,7 @@
     .container_img {
       @include directionX;
       margin: auto auto auto 0;
+      cursor: pointer;
 
       .recipe__img {
         position: relative;
