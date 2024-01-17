@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
@@ -6,11 +7,17 @@ import classes from "./style.module.scss";
 import { callApi } from "../../domain/api";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
 
   const changeCategoryHandler = (c) => {
     setSelectedCategory(c);
+  };
+
+  const goFavoriteHandler = () => {
+    navigate("/favorite");
   };
 
   useEffect(() => {
@@ -53,7 +60,13 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => {
                       ? classes.category__list_active
                       : classes.category__list
                   }
-                  onClick={() => changeCategoryHandler(c.strCategory)}
+                  onClick={
+                    c.strCategory === "Favorite"
+                      ? () => {
+                          goFavoriteHandler();
+                        }
+                      : () => changeCategoryHandler(c.strCategory)
+                  }
                 >
                   {c.strCategory}
                 </Typography>

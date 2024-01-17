@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import FoodList from "./pages/FoodList";
 import Logo from "./components/Logo/index.jsx";
 import FoodDetailPage from "./pages/FoodDetailPage";
+import FoodFavorite from "./pages/FoodFavorite";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <FoodList />,
+      },
+      {
+        path: "/favorite",
+        element: <FoodFavorite />,
       },
       {
         path: ":id",

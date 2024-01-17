@@ -42,3 +42,21 @@
     border-radius: 10px;
   }
 }
+
+.container_big {
+  @extend .container;
+  width: 350px;
+  height: 300px;
+
+  .content {
+    .img_big {
+      @extend .img;
+      width: 150px;
+      height: 150px;
+    }
+
+    .btn {
+      margin-top: 1rem;
+    }
+  }
+}

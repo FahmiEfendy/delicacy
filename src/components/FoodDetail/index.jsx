@@ -16,6 +16,27 @@ const FoodDetail = (id) => {
     navigate(`/${id}`);
   };
 
+  const favoriteHandler = async (idMeal, strMeal, strMealThumb) => {
+    const formattedData = {
+      id: idMeal,
+      strMeal,
+      strMealThumb,
+    };
+
+    try {
+      const response = await callApi(
+        "/favorites",
+        "POST",
+        {},
+        {},
+        formattedData,
+        true
+      );
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   useEffect(() => {
     if (!id) return;
 
@@ -126,10 +147,24 @@ const FoodDetail = (id) => {
                     })}
                   </Grid>
                   <Box className={classes.button_container}>
-                    <Button variant="outlined" className={classes.button_list}>
+                    <Button
+                      variant="outlined"
+                      className={classes.button_list}
+                      onClick={() => foodDetailHandler(food.idMeal)}
+                    >
                       Detail
                     </Button>
-                    <Button variant="outlined" className={classes.button_list}>
+                    <Button
+                      variant="outlined"
+                      className={classes.button_list}
+                      onClick={() => {
+                        favoriteHandler(
+                          food.idMeal,
+                          food.strMeal,
+                          food.strMealThumb
+                        );
+                      }}
+                    >
                       Add to favorites
                     </Button>
                   </Box>

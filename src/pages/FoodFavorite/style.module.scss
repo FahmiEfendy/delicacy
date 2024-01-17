@@ -1,0 +1,16 @@
+@import "../../styles/base.scss";
+
+.container {
+  .container__inner {
+    @include directionX;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  h3 {
+    @include directionX;
+    margin: 5rem auto;
+    font-family: $font-archivo-narrow;
+    font-weight: $font-weight-bold;
+  }
+}
